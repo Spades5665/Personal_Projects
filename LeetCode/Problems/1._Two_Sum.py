@@ -1,20 +1,22 @@
-# Problem: Given an array of integers nums and an integer target, 
-#          return indices of the two numbers such that they add 
-#          up to target.
+# Problem:
+#   Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+#   You may assume that each input would have exactly one solution, and you may not use the same element twice.
+#   You can return the answer in any order.
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         
-        # Loops through all numbers in nums, except the last index to avoid out of bounds errors
-        for i in range(len(nums) - 1):
+        # Create a hashmap to hold values found so far
+        hash_map = dict()
 
-            # Loop through numbers ahead of i to the end
-            for j in range(i + 1, len(nums)):
+        # Loop through each num in nums
+        for i in range(len(nums)):
 
-                # Check if the two numbers equal target
-                if nums[i] + nums[j] == target:
-                    return [i, j]
+            # Check if the pair of values has been found
+            if target - nums[i] in hash_map: return (i, hash_map[target - nums[i]])
 
-        # No two indices equaled the target
+            # Add element to hash map
+            hash_map[nums[i]] = i
+        
+        # No pair was found
         return []
-    
