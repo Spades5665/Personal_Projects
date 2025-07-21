@@ -23,3 +23,4 @@ class Solution:
 
         # Step 6: Return the maximum length found
         return max_len
+      
