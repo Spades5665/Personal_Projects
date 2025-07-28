@@ -1,4 +1,5 @@
-# Problem: Given the root of a binary tree, return the inorder traversal of its nodes' values.
+# Problem: 
+#   Given the root of a binary tree, return the inorder traversal of its nodes' values.
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -10,29 +11,23 @@
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
 
-        # Check if root exists
-        if not root: return []
+        # Hold in order sequence
+        in_order = []
 
-        # Create a stack to hold nodes to check and result array
-        inorder = []
-        stack = deque([root])
+        # Recursively traverse tree
+        def inOrderTraversal(node):
 
-        # Loop until stack is empty
-        while stack:
+            # Check for left child
+            if node.left: inOrderTraversal(node.left)
 
-            # Get next node for checking
-            current = stack[-1]
+            # Collect node's value
+            in_order.append(node.val)
 
-            # Check if this node has children to the left and append to stack
-            while current.left and current.left not in inorder:
-                current = current.left
-                stack.append(current)
+            # Check for right child
+            if node.right: inOrderTraversal(node.right)
 
-            # Pop the top of the stack and extract its value
-            inorder.append(stack.pop())
+        # Call on root if root exists
+        if root: inOrderTraversal(root)
 
-            # Check if the node had a child to the right and add it to stack
-            if current.right: stack.append(current.right)
-
-        # Return result array
-        return [x.val for x in inorder]
+        # Return list
+        return in_order
