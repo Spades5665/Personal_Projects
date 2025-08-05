@@ -14,6 +14,7 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
 
+        # Find a node using dfs traversal
         def dfs_find(target_node):
 
             # Create a stack for dfs traversal

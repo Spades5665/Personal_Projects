@@ -8,7 +8,7 @@ class Solution:
         # Hash map to hold unique values and their last index
         hash_map = dict()
 
-        # Loo pthrough each num in nums
+        # Loop through each num in nums
         for i in range(len(nums)):
 
             # Add the value to the hash_map if it isn't in yet
