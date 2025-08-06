@@ -8,23 +8,16 @@
 #         self.next = next
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-
-        # Get current head
-        curr = head
-
-        # Loop while there is another node to reverse
-        while curr and curr.next:
-
-            # Get the next two nodes
-            new_head = curr.next
-            new_next = curr.next.next
-
-            # Update connections
-            curr.next = new_next
-            new_head.next = head
-
-            # Update head
-            head = new_head
         
+        # Check if head or its next node exists
+        if not head or not head.next: return head
+
+        # Recursively call on next
+        new_head = self.reverseList(head.next)
+
+        # Update pointers
+        head.next.next = head
+        head.next = None
+
         # Return new head
-        return head
+        return new_head

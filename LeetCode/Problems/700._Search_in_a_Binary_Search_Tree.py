@@ -12,13 +12,5 @@
 class Solution:
     def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
 
-        # Loop until value is found
-        curr = root
-        while curr and curr.val != val: 
-            
-            # Traverse next path in tree
-            if curr.val > val: curr = curr.left
-            else: curr = curr.right
-
-        # Return target subtree
-        return curr
+        # Recursively call
+        return root if not root or root.val == val else self.searchBST(root.left, val) if root.val > val else self.searchBST(root.right, val)

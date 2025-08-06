@@ -1,7 +1,5 @@
-# Problem: Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle.
-
-# Each value of a pascal triangle is equal to (row) choose (index in row)
-from math import comb
+# Problem: 
+#   Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle.
 
 class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
