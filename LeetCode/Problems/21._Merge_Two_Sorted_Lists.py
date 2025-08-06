@@ -11,50 +11,18 @@
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
 
-        # Pointers to traverse each list
-        point_1 = list1
-        point_2 = list2
+        # Check base cases
+        if not list1 and not list2: return None
+        elif not list2: return list1
+        elif not list1: return list2
 
-        # Start the new list
-        curr = None
-        if (point_1 and point_2 and point_1.val <= point_2.val) or (point_1 and not point_2):
-            curr = point_1
-            point_1 = point_1.next
-        elif point_2:
-            curr = point_2
-            point_2 = point_2.next
-        
-        # New list head
-        new_head = curr
+        # Get next node and update pointers
+        next_node = list1 if list1.val <= list2.val else list2
+        if list1.val <= list2.val: list1 = list1.next
+        else: list2 = list2.next
 
-        # Loop while there is a comparison to make
-        while point_1 and point_2:
-            
-            # Get the lower of the two
-            res = point_1.val <= point_2.val
+        # Attach next node
+        next_node.next = self.mergeTwoLists(list1, list2)
 
-            # Find next node to add
-            new_node = point_1 if res else point_2
-
-            # Add the next node and increment curr
-            curr.next = new_node
-            curr = curr.next
-
-            # Increment correct pointer
-            point_1 = point_1.next if res else point_1
-            point_2 = point_2.next if not res else point_2
-
-        # Finish off list 1's values
-        while point_1:
-            curr.next = point_1
-            curr = curr.next
-            point_1 = point_1.next
-        
-        # Finish off list 2's values
-        while point_2:
-            curr.next = point_2
-            curr = curr.next
-            point_2 = point_2.next
-
-        # Return the new list
-        return new_head
+        # Return node
+        return next_node
