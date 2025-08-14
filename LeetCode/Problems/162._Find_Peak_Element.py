@@ -17,7 +17,7 @@ class Solution:
 
             # Get mid
             m = (l + r) // 2
-            print(f"Checking: {nums[l]}, m: {nums[m]}, r: {nums[r]}")
+            
             # Check for peak
             if (nums[m - 1] if m - 1 > -1 else -math.inf) < nums[m] > (nums[m + 1] if m + 1 < len(nums) else -math.inf): return m
 
