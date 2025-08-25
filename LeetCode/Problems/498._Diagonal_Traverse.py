@@ -1,4 +1,5 @@
-# Problem: Given an m x n matrix mat, return an array of all the elements of the array in a diagonal order.
+# Problem: 
+#   Given an m x n matrix mat, return an array of all the elements of the array in a diagonal order.
 
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
@@ -9,10 +10,10 @@ class Solution:
 
         # Create counters and result array
         diag = [0] * m * n
-        direc, i, r, c = 1, 0, 0, 0
+        direc, r, c = 1, 0, 0
 
         # loop until all dimensions have been read
-        while i < len(diag):
+        for i in range(len(diag)):
 
             # Set result value from matrix
             diag[i] = mat[r][c]
@@ -52,9 +53,6 @@ class Solution:
                 else:                
                     r += 1
                     c -= 1
-            
-            # Increment index
-            i += 1
 
         # Return diagonal values
         return diag
